@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E440C0B7-7BD9-4F7B-B6C5-97E45F7B13D6}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="dll\PluginDB1.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="visualizador\Visualizador.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="spselect\TesteSpSelect.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PluginDB1">
+        <MSBuild Projects="dll\PluginDB1.dproj"/>
+    </Target>
+    <Target Name="PluginDB1:Clean">
+        <MSBuild Projects="dll\PluginDB1.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PluginDB1:Make">
+        <MSBuild Projects="dll\PluginDB1.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Visualizador">
+        <MSBuild Projects="visualizador\Visualizador.dproj"/>
+    </Target>
+    <Target Name="Visualizador:Clean">
+        <MSBuild Projects="visualizador\Visualizador.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Visualizador:Make">
+        <MSBuild Projects="visualizador\Visualizador.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TesteSpSelect">
+        <MSBuild Projects="spselect\TesteSpSelect.dproj"/>
+    </Target>
+    <Target Name="TesteSpSelect:Clean">
+        <MSBuild Projects="spselect\TesteSpSelect.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TesteSpSelect:Make">
+        <MSBuild Projects="spselect\TesteSpSelect.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PluginDB1;Visualizador;TesteSpSelect"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PluginDB1:Clean;Visualizador:Clean;TesteSpSelect:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PluginDB1:Make;Visualizador:Make;TesteSpSelect:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
